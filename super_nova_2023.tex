@@ -1,0 +1,55 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 天文部誌「Super Nova」　使用エンジン：LuaLaTeX
+%
+% updated 09 Apr, 2021
+%
+% (c) Yosuke MORIYAMA
+% 上記の行を残してつかうこと．2次配布可．ご利用は計画的に．
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{classes/supernova}% 天文部誌用のプリアンブル・マクロの読込み
+\usepackage{microtype}
+%\usepackage[backend=biber,style=ieee]{biblatex}
+%\bibliography{references.bib}
+\include{sections/Azusa/preamble} % 国分梓用プリアンブル
+\include{sections/Tadachi/preamble} % 女の子と結婚したい.tex
+%%%%%%%%   表紙・ごあいさつ・目次   %%%%%%%%%
+\begin{document}
+
+\includepdf[noautoscale=true, fitpaper]{cover/2023spring_supernova_cover.pdf} %表紙
+% \maketitle %簡単に済ませる用
+\frontmatter
+\setcounter{page}{1} %ページカウンタのセット
+\subfile{sections/goaisatu} % ご挨拶ページ
+\setcounter{tocdepth}{1} % 目次に表示する見出しの深さ指定 0:chapter 1:section 2:subsection 3:subsubsection
+\tableofcontents % 目次
+\cleartooddpage% 奇数ページまでジャンプ
+
+\mainmatter
+%%%%%%%%%   ここから本編   %%%%%%%%
+% \subfile{hogehoge} % hogehoge.texを読み込む
+\subfile{sections/Mizuyoshi/main} % 調布祭レポート 3p 
+\subfile{sections/Ikeda/main} % 春の星座について 5p
+\subfile{sections/Azusa/main} % ブラックホールを作ろう！ 1p
+\subfile{sections/Nakahara/main} % プラネタリウムを作ろう！ 3p
+\subfile{sections/Tadachi/main} % 今日の星空を描画したい 1p
+\subfile{sections/Karasawa/main} % 調布周辺のプラネタリウム 2p
+\subfile{sections/Kawaguchi/key} % 天文クロスワード 2p
+\subfile{sections/YamaYama/main} % 天文と関係のあるポケモン紹介 2p
+\subfile{sections/Maruyama/main} % スペックは正義 6p
+\subfile{sections/Yosuke/Orion} % 調布でオリオン大星雲 5p
+%%%%%%%%   付録・編集後記   %%%%%%%%
+\appendix
+% \subfile{appendix} % 付録
+\subfile{sections/Yosuke/Photo}
+\backmatter % あとがき、編集後記はこの下に
+\subfile{sections/kouki} % 編集後記
+%\printbibliography[title=参考文献]
+%\addcontentsline{toc}{chapter}{参考文献}
+\includepdf[noautoscale=true, fitpaper]{cover/2023_spring_atogaki.pdf}
+\cleardoublepage
+\cleartoevenpage % 奇数ページまでジャンプ
+\includepdf[noautoscale=true, fitpaper]{cover/2023spring_supernova_cover_back.pdf} % 裏表紙
+\end{document}

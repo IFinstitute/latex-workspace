@@ -1,0 +1,17 @@
+\usepackage{ascmac}
+%%% 女の子と結婚したい.tex  %%%
+%%%  幸せになりたい.pdf    %%%
+
+%how to compile and convert to pdf
+%platex main.tex
+%dvipdfmx main
+
+
+\newcount\K % int K  
+\def\mylove{\K=0 \loop\ifnum\K<100                                                  
+女の子が好きだった...。\advance\K by1\repeat}
+\newcommand{\piasec}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  \section*{#1}
+}

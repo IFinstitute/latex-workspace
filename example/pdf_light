@@ -1,0 +1,1 @@
+gswin64c -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dBATCH -dQUIET -sOutputFile=super_nova_2023_light.pdf out/super_nova_2023.pdf

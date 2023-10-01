@@ -1,50 +1,31 @@
 {
-    "latex-workshop.latex.tools": [
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "%DOCFILE_EXT%"
-            ]
-        },
-        {
-            "name": "diff",
-            "command": "sh",
-            "args": [
-                "/workdir/bin/diff.sh"
-            ]
-        },
-        {
-            "name": "svg2png",
-            "command": "sh",
-            "args": [
-                "/workdir/bin/svg2png.sh"
-            ]
-        }
-    ],
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "compile",
-            "tools": [
-                "latexmk",
-            ]
-        },
-        // {
-        //     "name": "create_diff",
-        //     "tools": [
-        //         "diff",
-        //     ]
-        // },
-        // {
-        //     "name": "convert svg to png",
-        //     "tools": [
-        //         "svg2png",
-        //     ]
-        // }
-    ],
-    "latex-workshop.latex.autoBuild.run": "never",
-    "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "[tex]": {
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+
+    "[latex]": {
+
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+
+    "[bibtex]": {
+        // インデント幅を2にする
+        "editor.tabSize": 2
+    },
+
+    // ---------- LaTeX Workshop ----------
+
+    // 使用パッケージのコマンドや環境の補完を有効にする
+    "latex-workshop.intellisense.package.enabled": true,
+
+    
+    // 生成ファイルを削除するときに対象とするファイル
     "latex-workshop.latex.clean.fileTypes": [
         "*.aux",
         "*.bbl",
@@ -78,6 +59,64 @@
         //"*.log",
         //"*/*.log"
     ],
+    // 生成ファイルを "out" ディレクトリに吐き出す
+    "latex-workshop.latex.outDir": "out",
+    // ビルドのレシピに使われるパーツ
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-lualatex",
+                "-silent",
+                "-outdir=%OUTDIR%",
+                "-cd", /*カレントディレクトリからコンパイルするオプション（？） */
+                "-shell-escape", /*shell escape*/
+                "-f",
+                "%DOCFILE_EXT%"
+            ]
+        },
+        {
+            "name": "diff",
+            "command": "sh",
+            "args": [
+                "/workdir/bin/diff.sh"
+            ]
+        },
+        {
+            "name": "svg2png",
+            "command": "sh",
+            "args": [
+                "/workdir/bin/svg2png.sh"
+            ]
+        }
+    ],
+    // ビルドのレシピ
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "compile",
+            "tools": [
+                "latexmk",
+            ]
+        },
+        {
+            "name": "create_diff",
+            "tools": [
+                "diff",
+            ]
+        },
+        {
+            "name": "convert svg to png",
+            "tools": [
+                "svg2png",
+            ]
+        }
+    ],
+    // ファイル保存時に自動的にビルドをON OFFにするなら"never"
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    // LaTeXのフォーマッター(linter)の設定
     "latex-workshop.latexindent.path": "sh",
     "latex-workshop.latexindent.args": [
         "/workdir/bin/linter.sh",

@@ -1,0 +1,87 @@
+\documentclass[
+  paper=a4 , %用紙サイズ(a4paperがdefault)
+  book , %文書クラス(articleがdefault)
+  openany, % 章が奇数ページから始まる指定の無効化
+  fontsize=10pt , %フォントサイズ(10ptがdefault)
+  jafontsize=10pt, % 日本語フォントサイズを10pt
+  gutter=25.6mm, % のどの余白を25.6mm
+  head_space=20mm, % 余白(上)を20mm
+  foot_space=20mm, % 余白(下)を20mm
+  line_length=165mm, %一行の文字数（本文部分の幅）の設定
+  %number_of_lines=30, % 行数の指定
+  jlreq_warnings , %日本語組版処理の要件に反する設定が行われた場合に警告
+  %sidenote_length={4zw}, %sidenoteの脚注幅設定
+]{jsarticle}
+
+\usepackage[dvipdfmx]{color}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb} % 数式関連
+\usepackage{siunitx} % SI単位系入力のマクロ
+\usepackage{url}
+
+
+%%% 女の子と結婚したい.tex  %%%
+%%%  幸せになりたい.pdf    %%%
+
+%how to compile and convert to pdf
+%platex main.tex
+%dvipdfmx main
+
+
+\newcount\K % int K  
+\def\mylove{\K=0 \loop\ifnum\K<100                                                  
+女の子が好きだった...。\advance\K by1\repeat}
+
+
+\begin{document}
+\centerline{\Large{\bf 今日の星空を描画したい}}
+\rightline{\bf M1 忠地涼汰}
+\vspace{-3mm}
+\section*{恒星の描画}
+\vspace{-2mm}
+前回のSuper Nova\cite{a}では任意の時刻・位置から見える星空を計算した。
+具体的には赤道座標系から地平座標系への変換を行った。
+今回は地平座標系から二次元平面への変換を行い、実際に星空を描画してみよう。
+等距離射影の全天周画像を作成する。
+任意の天体の地平座標系における方向余弦$(x,y,z)^\top$を画像上の座標$(u,v)^\top$
+へ次式で変換する。
+\vspace{-3mm}
+\begin{align}
+  \begin{pmatrix}
+      u \\ v \\
+  \end{pmatrix}
+  =
+  \frac{1-\frac{2}{\pi} \sin^{-1}{z}}{\sqrt{x^2 + y^2}}
+  \begin{pmatrix}
+    x \\ y \\
+  \end{pmatrix}
+  \notag
+\end{align}
+
+恒星を描画する時に恒星の明るさによって円の大きさを変化させると見やすい。
+5等級小さくなると明るさは100倍になり、
+明るさと描画面積が比例すると考えれば、
+恒星の視等級を$m$、0等星の描画半径を$r_0$とすると
+描画半径は$r = r_0 \lambda^m$となる。
+ここで、理論的には$\lambda = \sqrt[10]{\frac{1}{100}} \approx 0.63$であるが、
+実際には$\lambda = 0.7$程度が見やすい。
+
+\vspace{-3mm}
+\section*{2023年3月12日20時に調布市で見える星空}
+\vspace{-2mm}
+ヒッパルコス星表などから恒星の赤経赤緯を参照し、
+2023年3月12日20時に調布市から見える星空を計算して描画する。
+今回はヒッパルコス星表の約12万個の恒星と星座線・星座名・天の川データ\cite{b}をPythonで描画してみた。
+南の空にシリウスが見えますね。%\mylove
+\begin{figure}[h]
+  \centering 
+  \leavevmode
+  \includegraphics[width=0.55\textwidth]{piari.png} 
+\end{figure}
+
+\vspace{-3mm}
+\begin{thebibliography}{1}
+  \bibitem{a} 電気通信大学天文部, Super Nova 2022 調布祭特別号, \url{http://www.astro.club.uec.ac.jp} .
+  \bibitem{b} Astro Commons, \url{http://astro.starfree.jp/commons}.
+\end{thebibliography}
+\end{document}
