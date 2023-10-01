@@ -112,8 +112,8 @@
             ]
         }
     ],
-    // ファイル保存時に自動的にビルドをON OFFにするなら"never"
-    "latex-workshop.latex.autoBuild.run": "onSave",
+    // ファイル保存時に自動的にビルドをOFF ONにするなら"onSave"
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.autoClean.run": "onBuilt",
     // LaTeXのフォーマッター(linter)の設定

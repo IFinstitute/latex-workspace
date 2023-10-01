@@ -3,10 +3,10 @@
 
 \def\vector#1{\mbox{\boldmath $#1$}}
 \newcommand{\AmSLaTeX}{%
- $\mathcal A$\lower.4ex\hbox{$\!\mathcal M\!$}$\mathcal S$-\LaTeX}
+	$\mathcal A$\lower.4ex\hbox{$\!\mathcal M\!$}$\mathcal S$-\LaTeX}
 \newcommand{\PS}{{\scshape Post\-Script}}
 \def\BibTeX{{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em
- T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125em X}}
 \newcommand{\DeLta}{{\mit\Delta}}
 \renewcommand{\d}{{\rm d}}
 \def\wcaption#1{\caption[]{\parbox[t]{100mm}{#1}}}
@@ -15,21 +15,21 @@
 
 \makeatletter
 \def\@seccntformat#1{\@ifundefined{#1@cntformat}%
-   {\csname the#1\endcsname\quad}%      default
-   {\csname #1@cntformat\endcsname}%    enable individual control
+	{\csname the#1\endcsname\quad}%      default
+	{\csname #1@cntformat\endcsname}%    enable individual control
 }
 \makeatother
 \newcommand{\Azusection}[3]{
-  \phantomsection
-  \addcontentsline{toc}{section}{#1}
-  \begin{tcolorbox}[enhanced,empty,left skip=0pt,left=5pt,
-    coltitle=white,title={\textbf{#1}},sharp corners,
-    overlay={
-    \begin{tcbclipframe}
-    \fill[black] (title.south west)--++(#2,0)--++(0,1)--++(-#2,0)--cycle;
-    \end{tcbclipframe}}]
-    　#3
-  \end{tcolorbox}
+	\phantomsection
+	\addcontentsline{toc}{section}{#1}
+	\begin{tcolorbox}[enhanced,empty,left skip=0pt,left=5pt,
+			coltitle=white,title={\textbf{#1}},sharp corners,
+			overlay={
+					\begin{tcbclipframe}
+						\fill[black] (title.south west)--++(#2,0)--++(0,1)--++(-#2,0)--cycle;
+					\end{tcbclipframe}}]
+		#3
+	\end{tcolorbox}
 }
 
 \newcommand{\tenexp}[2]{#1\times10^{#2}}

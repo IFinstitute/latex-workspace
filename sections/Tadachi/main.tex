@@ -1,5 +1,5 @@
-%! TEX root = ../supernova_2023.tex
-\documentclass[supernova_2023]{subfiles}
+%! TEX root = ../../supernova_2023.tex
+\documentclass[../../super_nova_2023]{subfiles}
 
 \begin{document}
 \chapter{今日の星空を描画したい}
@@ -14,15 +14,15 @@
 へ次式で変換する。
 \vspace{-3mm}
 \begin{align}
-  \begin{pmatrix}
-      u \\ v \\
-  \end{pmatrix}
-  =
-  \frac{1-\frac{2}{\pi} \sin^{-1}{z}}{\sqrt{x^2 + y^2}}
-  \begin{pmatrix}
-    x \\ y \\
-  \end{pmatrix}
-  \notag
+	\begin{pmatrix}
+		u \\ v \\
+	\end{pmatrix}
+	=
+	\frac{1-\frac{2}{\pi} \sin^{-1}{z}}{\sqrt{x^2 + y^2}}
+	\begin{pmatrix}
+		x \\ y \\
+	\end{pmatrix}
+	\notag
 \end{align}
 
 恒星を描画する時に恒星の明るさによって円の大きさを変化させると見やすい。
@@ -33,11 +33,11 @@
 ここで、理論的には$\lambda = \sqrt[10]{\frac{1}{100}} \approx 0.63$であるが、
 実際には$\lambda = 0.7$程度が見やすい。
 \begin{tcolorbox}
-  \scriptsize
-$\lambda$とは・・・星の明るさと描画半径を結びつけるために導入したパラメータのようなもの\par
-$r = r_0 \lambda^m$ とおいて明るさ$A(m)$を面積で $ A(m) = \pi r^2 = \pi r_0^2 \lambda^{2m} $と表す． 
-5等大きくなると明るさ（面積）が$\frac{1}{100}$倍なので
-\[\frac{A(m+5)}{A(m)} = \frac{\pi r_0^2 \lambda^{2m+10}}{\pi r_0^2 \lambda^{2m}} = \frac{1}{100} \Leftrightarrow \lambda^{10} = \frac{1}{100} \Leftrightarrow \lambda = ^{10}\sqrt{\frac{1}{100}} \]  
+	\scriptsize
+	$\lambda$とは・・・星の明るさと描画半径を結びつけるために導入したパラメータのようなもの\par
+	$r = r_0 \lambda^m$ とおいて明るさ$A(m)$を面積で $ A(m) = \pi r^2 = \pi r_0^2 \lambda^{2m} $と表す． 
+	5等大きくなると明るさ（面積）が$\frac{1}{100}$倍なので
+	\[\frac{A(m+5)}{A(m)} = \frac{\pi r_0^2 \lambda^{2m+10}}{\pi r_0^2 \lambda^{2m}} = \frac{1}{100} \Leftrightarrow \lambda^{10} = \frac{1}{100} \Leftrightarrow \lambda = ^{10}\sqrt{\frac{1}{100}} \]
 \end{tcolorbox}
 
 
@@ -48,14 +48,14 @@ $r = r_0 \lambda^m$ とおいて明るさ$A(m)$を面積で $ A(m) = \pi r^2 = \
 今回はヒッパルコス星表の約12万個の恒星と星座線・星座名・天の川データ\cite{b}をPythonで描画してみた。
 南の空にシリウスが見えますね。%\mylove
 \begin{figure}[h]
-  \centering 
-  \leavevmode
-  \includegraphics[width=0.55\textwidth]{figures/Tadachi/piari.png} 
+	\centering 
+	\leavevmode
+	\includegraphics[width=0.55\textwidth]{figures/Tadachi/piari.png}
 \end{figure}
 
 \vspace{-3mm}
 \begin{thebibliography}{1}
-  \bibitem{a} 電気通信大学天文部, Super Nova 2022 調布祭特別号, \url{http://www.astro.club.uec.ac.jp} .
-  \bibitem{b} Astro Commons, \url{http://astro.starfree.jp/commons}.
+	\bibitem{a} 電気通信大学天文部, Super Nova 2022 調布祭特別号, \url{http://www.astro.club.uec.ac.jp} .
+	\bibitem{b} Astro Commons, \url{http://astro.starfree.jp/commons}.
 \end{thebibliography}
 \end{document}

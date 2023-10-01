@@ -1,0 +1,20 @@
+% !TEX root = ./main.tex
+\documentclass{classes/supernova}
+
+\begin{document}
+こんにちは．
+% \subfile{sections/title}
+%\newpage
+
+\tableofcontents
+\clearpage
+
+%\subfile{sections/abstract}
+%\newpage
+
+\subfile{sections/main_issue}
+\newpage
+
+% \subfile{sections/references}
+
+\end{document}

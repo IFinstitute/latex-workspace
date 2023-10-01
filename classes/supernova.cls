@@ -28,6 +28,9 @@
 \usepackage{fancyhdr} % 柱とノンブルの制御
 \usepackage{setspace} % 行間設定用パッケージ
 \usepackage{nextpage} % \cleartooddpage, \cleartoevenpageを有効に
+\usepackage[1.7]{bxpdfver} % 出力PDFバージョンを1.7に
+% \usepackage{microtype}
+% \microtypesetup{fontsize=10pt, spacing=true} % フォントサイズとspacingを設定
 
 \usepackage{grffile} %ファイル名にドットやスペースが入っていても許容できるようにする。
 \usepackage[dvipsnames]{xcolor} % 色関連
@@ -35,16 +38,6 @@
 \usepackage{tikz} %tikZ環境
 \usepackage{float} % 画像や表を指定した場所に表示する[H]が使える
 \usepackage{wrapfig} % 図の回り込み表示が可能
-
-\usepackage{tabularx} % 表の幅を指定できる
-
-%\usepackage{amsmath,amssymb} % 数式関連
-\usepackage{mathtools} % amsmathの拡張
-\usepackage{latexsym} % 数学用記号拡張
-
-\usepackage{newtxmath} %lxfontsなど可 数式フォントについて
-\usepackage{textcomp} % 特殊文字
-%\usepackage{mathcomp} % 数学用フォント
 
 \usepackage{luatexja-otf} % LuaLaTeXにおけるOpen Type Fontの有効化
 \usepackage{luatexja-ruby} % ルビを振る \ruby{漢字}{ふりがな}
@@ -56,14 +49,8 @@
 \usepackage{tcolorbox} % テキストのコラムボックスを作成したりいろいろ
 \tcbuselibrary{raster,skins,breakable}
 
-\usepackage{minted} % ソースコード表示の用パッケージ
-% \usepackage{listings} % \lstlistingなどコードの掲載に必要
-
-%\usepackage[hyphens]{xurl} % URLを表示するためのパッケージ、ハイフンでの改行を許可
-
 \usepackage[
   luatex,
-  pdfencoding=auto,
   unicode,
   hidelinks,
   colorlinks=true,
@@ -72,15 +59,23 @@
   urlcolor=Blue, 
   hyperfootnotes=false
   ]{hyperref}%urlやハイパーリンクを可能にする。colorlinks=true,allcolors=blueでリンク部分が青くなる。
-\urlstyle{same} % URLの表示形式を本文と同じにする
+% \urlstyle{same} % URLの表示形式を本文と同じにする
 \usepackage{bookmark} % しおりつきPDFを作る
 \usepackage[T1]{fontenc} % フォントエンコーディングをT1にする。
 \usepackage{lmodern} % Latin Modern フォントを使う
-\usepackage[delux, haranoaji]{luatexja-preset} % フォントの指定
-\setmainjfont{Noto Sans JP}[BoldFont=Noto Sans JP Bold] %日本語入力でのフォントを「Noto Sans JP」（太字：「Noto Sans JP Bold）にする。
-\setmainfont{Noto Sans JP}[BoldFont=Noto Sans JP Bold]%英語入力でのフォントを「Noto Sans JP」（太字：「NOto Sans JP Bold）にする。
+
+\usepackage[no-math, noto-otf]{luatexja-preset} % フォントの指定
+% 和文フォント設定（上から明朝、ゴシック、等幅）
+\setmainjfont{Noto Serif CJK JP}[BoldFont=Noto Serif CJK JP Bold]
+\setsansjfont{Noto Sans CJK JP}[BoldFont=Noto Sans CJK JP Bold]
+\setmonojfont{Noto Sans Mono CJK JP}[BoldFont=Noto Sans Mono CJK JP Bold]
+% % 欧文フォント設定（上からSerif, Sanserif, Monospace）
+% \setmainjfont{Noto Serif}[BoldFont=Noto Serif Bold]
+% \setsansjfont{Noto Sans}[BoldFont=Noto Sans Bold]
+\setmonojfont{Noto Sans}[BoldFont=Noto Sans Mono Bold]
+
 \usepackage{emoji}
-\setemojifont{TwemojiMozilla} % または\setemojifont{EmojiOneMozilla}
+\setemojifont{TwemojiMozilla} % \setemojifont{Noto Color Emoji}[Renderer=HarfBuzz]または\setemojifont{EmojiOneMozilla}
 \newjfontfamily{\jMplus}[ % {\jMplus hoge}で指定した箇所(hoge)のみを「M PLUS 2」フォントで出力させる命令
   YokoFeatures={JFM=jlreq},
   TateFeatures={JFM=jlreqv},
@@ -95,7 +90,8 @@
 % \usepackage{bm} % ベクトル
 % 
 \usepackage{siunitx} % SI単位系入力のマクロ
-% \usepackage{physics2} % 物理計算式の簡便化マクロ physics -> physics2 https://qiita.com/Yarakashi_Kikohshi/items/131e2324f401c3effb84
+% \usepackage{physics2} % 物理計算式の簡便化マクロ 
+% physics -> physics2 https://qiita.com/Yarakashi_Kikohshi/items/131e2324f401c3effb84
 % \usepackage{circuitikz} % 回路系の描画用マクロ
 % 
 % \usepackage[version=4]{mhchem}
@@ -109,6 +105,20 @@
 % \usepackage{enumitem} %箇条書きのカスタマイズが可能
 % \usepackage{enumerate} % 高機能番号付き箇条書きのパッケージ
 % \usepackage{paralist} % インラインリストのパッケージ
+%
+\usepackage{tabularx} % 表の幅を指定できる
+% hyperrefと競合するため、hyperrefより後で宣言する（これでもグレーらしい）
+\usepackage{amsmath,amssymb} % 数式関連 (ONにした場合は末尾の\eqrefを\renewcommandに変更)
+\usepackage{mathtools} % amsmathの拡張
+\usepackage{latexsym} % 数学用記号拡張
+%
+%\usepackage{sansmathfonts} % 数式フォントについて
+%\usepackage{textcomp} % 特殊文字
+%\usepackage{mathcomp} % 数学用フォント
+%\usepackage{minted} % ソースコード表示の用パッケージ
+% \usepackage{listings} % \lstlistingなどコードの掲載に必要
+
+%\usepackage[hyphens]{xurl} % URLを表示するためのパッケージ、ハイフンでの改行を許可
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \parindent = 1\zw % 段落ごとに1文字分(全角スペース)のインデント
@@ -173,7 +183,7 @@ after_space=1.5ex,
 
 \SaveHeading{subsubsection}{\restoresubsubsection} % \subsectionの中身を\restoresubsectionに待避．
 \RenewBlockHeading{subsubsection}{1}{
-font={\fontsize{10pt}{0}\bfseries},
+font={\fontsize{10pt}{0}\bfseries\jMplus\Mplus},
 format={#1#2},
 after_label_space=1\zw ,
 before_space=2.5ex,
@@ -189,4 +199,5 @@ after_space=1.5ex,
 % 図表番号を参照するときに図\ref{hoge}とかしなくて言いようにするマクロ
 \newcommand{\figref}[1]{図\ref{fig:#1}}
 \newcommand{\tabref}[1]{表\ref{tab:#1}}
+%\newcommand{\eqref}[1]{式(\ref{eq:#1})}
 \renewcommand{\eqref}[1]{式(\ref{eq:#1})}

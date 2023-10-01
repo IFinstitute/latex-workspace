@@ -10,7 +10,7 @@
 				"James-Yu.latex-workshop",
 				"mhutchie.git-graph",
         		"ms-vscode-remote.remote-containers",
-        		//"taichi.vscode-textlint"
+        		"taichi.vscode-textlint"
 			]
 		}
 	},

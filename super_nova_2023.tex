@@ -10,14 +10,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass{classes/supernova}% 天文部誌用のプリアンブル・マクロの読込み
-\usepackage{microtype}
 %\usepackage[backend=biber,style=ieee]{biblatex}
 %\bibliography{references.bib}
 \include{sections/Azusa/preamble} % 国分梓用プリアンブル
 \include{sections/Tadachi/preamble} % 女の子と結婚したい.tex
+
 %%%%%%%%   表紙・ごあいさつ・目次   %%%%%%%%%
 \begin{document}
-
+\gtfamily\sffamily % 本文をゴシック体サンセリフ体に統一する
 \includepdf[noautoscale=true, fitpaper]{cover/2023spring_supernova_cover.pdf} %表紙
 % \maketitle %簡単に済ませる用
 \frontmatter
